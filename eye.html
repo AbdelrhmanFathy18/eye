@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            position: relative;
+            display: flex;
+            /* justify-content: center; */
+            /* align-items: center; */
+            min-height: 100vh;
+            background: radial-gradient(#f2761e,#ef4921);
+            overflow: hidden;
+        }
+        .box{
+            position: absolute;
+            left: 35%;
+            bottom: 40%;
+            display: flex;
+        }
+        .box .eye{
+            position: relative;
+            width: 120px;
+            height: 120px;
+            display: block;
+            background:#fff;
+            margin: 0 20px;
+            border-radius: 50%;
+            box-shadow: 0 5px 45px rgba(0, 0, 0, 0.2),
+                        inset 0 0 15px #f2761e,
+                        inset 0 0 25px #f2761e;
+        }
+        .box .eye::before{
+            content:'';
+            position: absolute;
+            top: 50%;
+            left: 35%;
+            transform: translate(-50%,-50%);
+            width: 45px;
+            height: 45px;
+            border-radius:50%;
+            background:#000;
+            border: 10px solid #2196f3;
+            box-sizing: border-box;
+        }
+
+        .cursor{
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        .cursor .circle{
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background:linear-gradient(#00d0ff,#ff005e);
+            border-radius:50%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="eye">
+
+        </div>
+        <div class="eye">
+            
+        </div>
+    </div>
+
+
+    <div class="cursor">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>        
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script>
+        document.querySelector('body').addEventListener('mousemove',eyeball);
+        function eyeball(){
+            const eye = document.querySelectorAll('.eye');
+            eye.forEach(function(eye){
+                let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
+                let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+                let radian = Math.atan2(event.pageX - x, event.pageY - y);
+                let rotation = (radian * (180 / Math.PI)*-1) + 270;
+                eye.style.transform = "rotate("+rotation+"deg)";
+            })
+        }
+        document.body.addEventListener("mousemove", e =>{
+            gsap.to(".circle", {
+                x : e.clientX,
+                y :e.clientY,
+                stagger : -0.05,
+            })
+        })
+
+    </script>
+</body>
+</html>
